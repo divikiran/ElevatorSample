@@ -1,5 +1,6 @@
 ﻿using System;
 using Xamarin.Forms;
+using System.Diagnostics;
 
 namespace ElevatorSample
 {
@@ -12,8 +13,8 @@ namespace ElevatorSample
 		public Floor (int floorNumber)
 		{
 			FloorNumber = floorNumber;
-			this.VerticalOptions = LayoutOptions.Center;
-			this.HorizontalOptions = LayoutOptions.FillAndExpand;
+			this.VerticalOptions = LayoutOptions.Start;
+			this.HorizontalOptions = LayoutOptions.Start;
 
 			this.Children.Add 
 			(
@@ -22,10 +23,19 @@ namespace ElevatorSample
 					TextColor = Color.White,
 					BackgroundColor = Color.Blue,
 					HeightRequest = 30,
-					WidthRequest = 30,
-					VerticalOptions = LayoutOptions.Center,
-					HorizontalOptions = LayoutOptions.Center
+					WidthRequest = 30, 
+					XAlign = TextAlignment.Center,
+					YAlign = TextAlignment.Center
 				});
+
+			var button = new Button ();
+			button.Clicked += async (object sender, EventArgs e) =>{
+				
+			};
+
+			this.Children.Add (
+				button
+			);
 		}
 	}
 }

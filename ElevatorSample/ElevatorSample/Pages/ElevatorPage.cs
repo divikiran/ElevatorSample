@@ -12,8 +12,9 @@ namespace ElevatorSample
 			Title = "Elevator";
 
 			var contentStack = new StackLayout (){
-				VerticalOptions=LayoutOptions.FillAndExpand,
-				HorizontalOptions=LayoutOptions.FillAndExpand
+				VerticalOptions=LayoutOptions.StartAndExpand,
+				HorizontalOptions=LayoutOptions.FillAndExpand,
+				BackgroundColor = Color.Olive,
 			};
 
 			List<Floor> floors = new List<Floor> ();
