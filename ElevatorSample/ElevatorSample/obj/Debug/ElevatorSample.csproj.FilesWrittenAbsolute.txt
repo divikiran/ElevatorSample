@@ -1,0 +1,7 @@
+/Users/divikiranravela/GitHub/ElevatorSample/ElevatorSample/ElevatorSample/obj/Debug/.NETPortable,Version=v4.5,Profile=Profile78.AssemblyAttribute.cs
+/Users/divikiranravela/GitHub/ElevatorSample/ElevatorSample/ElevatorSample/bin/Debug/ElevatorSample.dll.mdb
+/Users/divikiranravela/GitHub/ElevatorSample/ElevatorSample/ElevatorSample/bin/Debug/ElevatorSample.dll
+/Users/divikiranravela/GitHub/ElevatorSample/ElevatorSample/ElevatorSample/obj/Debug/ElevatorSample.dll
+/Users/divikiranravela/GitHub/ElevatorSample/ElevatorSample/ElevatorSample/obj/Debug/ElevatorSample.dll.mdb
+/Users/divikiranravela/GitHub/ElevatorSample/ElevatorSample/ElevatorSample/bin/Debug/Xamarin.Forms.Core.dll
+/Users/divikiranravela/GitHub/ElevatorSample/ElevatorSample/ElevatorSample/bin/Debug/Xamarin.Forms.Xaml.dll
