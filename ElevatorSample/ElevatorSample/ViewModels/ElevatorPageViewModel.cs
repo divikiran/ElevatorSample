@@ -17,16 +17,16 @@ namespace ElevatorSample.ViewModels
         private ElevatorModel _elevatorModelD;
         private string _title;
         private int _noOfPeople;
-        private FloorModel _floorOne;
-        private FloorModel _floorTwo;
-        private FloorModel _floorThree;
-        private FloorModel _floorFour;
-        private FloorModel _floorFive;
-        private FloorModel _floorSix;
-        private FloorModel _floorSeven;
-        private FloorModel _floorEight;
-        private FloorModel _floorNine;
-        private FloorModel _floorTen;
+        private FloorModel _floorOne = new FloorModel();
+        private FloorModel _floorTwo = new FloorModel();
+        private FloorModel _floorThree = new FloorModel();
+        private FloorModel _floorFour = new FloorModel();
+        private FloorModel _floorFive = new FloorModel();
+        private FloorModel _floorSix = new FloorModel();
+        private FloorModel _floorSeven = new FloorModel();
+        private FloorModel _floorEight = new FloorModel();
+        private FloorModel _floorNine = new FloorModel();
+        private FloorModel _floorTen = new FloorModel();
 
         public ElevatorModel ElevatorModelA
         {
@@ -185,6 +185,17 @@ namespace ElevatorSample.ViewModels
             _elevatorModelC = new ElevatorModel("ElevatorC", this);
             _elevatorModelB = new ElevatorModel("ElevatorB",this);
             _elevatorModelA = new ElevatorModel("ElevatorA", this);
+        
+            _floorOne.FloorNumber = 1;
+            _floorTwo.FloorNumber = 2;
+            _floorThree.FloorNumber = 3;
+            _floorFour.FloorNumber = 4;
+            _floorFive.FloorNumber = 5;
+            _floorSix.FloorNumber = 6;
+            _floorEight.FloorNumber = 7;
+            _floorEight.FloorNumber = 8;
+            _floorNine.FloorNumber = 9;
+            _floorTen.FloorNumber = 10;
         }
     }
 }

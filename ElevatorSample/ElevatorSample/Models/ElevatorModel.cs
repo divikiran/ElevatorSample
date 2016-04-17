@@ -21,6 +21,7 @@ namespace ElevatorSample.Models
         private Color _elevatorColor3 = Color.White;
         private Color _elevatorColor2 = Color.White;
         private Color _elevatorColor1 = Color.White;
+        private string _noOfPeopleInElevator = "0";
         public int CurrentFloor { get; set; } = 1;
 
         public List<int> FloorsToGo { get; set; }
@@ -134,7 +135,15 @@ namespace ElevatorSample.Models
             }
         }
 
-        public string NoOfPeopleInElevator { get; set; } = "0";
+        public string NoOfPeopleInElevator
+        {
+            get { return _noOfPeopleInElevator; }
+            set
+            {
+                _noOfPeopleInElevator = value; 
+                OnPropertyChanged(nameof(NoOfPeopleInElevator));
+            }
+        }
 
         public ICommand LabelTapped { get; set; }
 
@@ -227,56 +236,67 @@ namespace ElevatorSample.Models
                     ElevatorColor9 = i == 9 ? Color.Maroon : Color.White;
                     ElevatorColor10 = i == 10 ? Color.Maroon : Color.White;
 
+                    switch (i)
+                    {
+                        case 1:
+                            floorStatus = ParentModel.FloorOne;
+                            break;
+                        case 2:
+                            floorStatus = ParentModel.FloorTwo;
+                            break;
+                        case 3:
+                            floorStatus = ParentModel.FloorThree;
+                            break;
+                        case 4:
+                            floorStatus = ParentModel.FloorFour;
+                            break;
+                        case 5:
+                            floorStatus = ParentModel.FloorFive;
+                            break;
+                        case 6:
+                            floorStatus = ParentModel.FloorSix;
+                            break;
+                        case 7:
+                            floorStatus = ParentModel.FloorSeven;
+                            break;
+                        case 8:
+                            floorStatus = ParentModel.FloorEight;
+                            break;
+                        case 9:
+                            floorStatus = ParentModel.FloorNine;
+                            break;
+                        case 10:
+                            floorStatus = ParentModel.FloorTen;
+                            break;
+                        default:
+                            break;
+                    }
+
+                    if (floorStatus != null)
+                    {
+                        if (floorStatus.NoOfPeople > 0)
+                        {
+                            for (int j = 1; j < floorStatus.NoOfPeople; j++)
+                            {
+                                var currentNoOfPplInElevator = Convert.ToInt32(this.NoOfPeopleInElevator);
+                                if (currentNoOfPplInElevator <= 20)
+                                {
+                                    currentNoOfPplInElevator ++;
+                                    this.NoOfPeopleInElevator = currentNoOfPplInElevator.ToString();
+                                    floorStatus.NoOfPeople--;
+                                }
+                                else
+                                {
+                                    break;
+                                }
+                            }
+                        }
+                    }
 
                     if (FloorsToGo.Contains(i))
                     {
                         FloorsToGo.Remove(i);
-                        switch (i)
-                        {
-                            case 1:
-                                floorStatus = ParentModel.FloorOne;
-                                floorStatus.NoOfPeople = 0;
-
-                                break;
-                            case 2:
-                                floorStatus = ParentModel.FloorTwo;
-                                floorStatus.NoOfPeople = 0;
-                                break;
-                            case 3:
-                                floorStatus = ParentModel.FloorThree;
-                                floorStatus.NoOfPeople = 0;
-                                break;
-                            case 4:
-                                floorStatus = ParentModel.FloorFour;
-                                floorStatus.NoOfPeople = 0;
-                                break;
-                            case 5:
-                                floorStatus = ParentModel.FloorFive;
-                                floorStatus.NoOfPeople = 0;
-                                break;
-                            case 6:
-                                floorStatus = ParentModel.FloorSix;
-                                floorStatus.NoOfPeople = 0;
-                                break;
-                            case 7:
-                                floorStatus = ParentModel.FloorSeven;
-                                floorStatus.NoOfPeople = 0;
-                                break;
-                            case 8:
-                                floorStatus = ParentModel.FloorEight;
-                                floorStatus.NoOfPeople = 0;
-                                break;
-                            case 9:
-                                floorStatus = ParentModel.FloorNine;
-                                floorStatus.NoOfPeople = 0;
-                                break;
-                            case 10:
-                                floorStatus = ParentModel.FloorTen;
-                                floorStatus.NoOfPeople = 0;
-                                break;
-                            default:
-                                break;
-                        }
+                        
                         if (FloorsToGo.Count == 0)
                         {
                             CurrentFloor = i;
