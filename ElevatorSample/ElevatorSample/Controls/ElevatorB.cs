@@ -1,0 +1,15 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ElevatorSample.Controls
+{
+    public class ElevatorB : ElevatorBase
+    {
+        public ElevatorB(string elevatorName) : base(elevatorName)
+        {
+        }
+    }
+}

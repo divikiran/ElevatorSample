@@ -2,13 +2,25 @@
 <Paths>
   <Jars></Jars>
   <ResolvedResourceDirectories>
-    <ResolvedResourceDirectory>/Users/divikiranravela/GitHub/ElevatorSample/ElevatorSample/Droid/obj/Debug/__library_projects__/Xamarin.Forms.Platform.Android/library_project_imports/res</ResolvedResourceDirectory>
+    <ResolvedResourceDirectory>C:\Users\div\Documents\GitHub\ElevatorSample\ElevatorSample\Droid\obj\Debug\__library_projects__\Acr.Support.Android\library_project_imports\res</ResolvedResourceDirectory>
+    <ResolvedResourceDirectory>C:\Users\div\Documents\GitHub\ElevatorSample\ElevatorSample\Droid\obj\Debug\__library_projects__\Acr.UserDialogs\library_project_imports\res</ResolvedResourceDirectory>
+    <ResolvedResourceDirectory>C:\Users\div\Documents\GitHub\ElevatorSample\ElevatorSample\Droid\obj\Debug\__library_projects__\AndHUD\library_project_imports\res</ResolvedResourceDirectory>
+    <ResolvedResourceDirectory>C:\Users\div\Documents\GitHub\ElevatorSample\ElevatorSample\Droid\obj\Debug\__library_projects__\Splat\library_project_imports\res</ResolvedResourceDirectory>
+    <ResolvedResourceDirectory>C:\Users\div\Documents\GitHub\ElevatorSample\ElevatorSample\Droid\obj\Debug\__library_projects__\Xamarin.Forms.Platform.Android\library_project_imports\res</ResolvedResourceDirectory>
   </ResolvedResourceDirectories>
   <ResolvedAssetDirectories>
-    <ResolvedAssetDirectory>/Users/divikiranravela/GitHub/ElevatorSample/ElevatorSample/Droid/obj/Debug/__library_projects__/Xamarin.Forms.Platform.Android/library_project_imports/assets</ResolvedAssetDirectory>
+    <ResolvedAssetDirectory>C:\Users\div\Documents\GitHub\ElevatorSample\ElevatorSample\Droid\obj\Debug\__library_projects__\Acr.Support.Android\library_project_imports\assets</ResolvedAssetDirectory>
+    <ResolvedAssetDirectory>C:\Users\div\Documents\GitHub\ElevatorSample\ElevatorSample\Droid\obj\Debug\__library_projects__\Acr.UserDialogs\library_project_imports\assets</ResolvedAssetDirectory>
+    <ResolvedAssetDirectory>C:\Users\div\Documents\GitHub\ElevatorSample\ElevatorSample\Droid\obj\Debug\__library_projects__\AndHUD\library_project_imports\assets</ResolvedAssetDirectory>
+    <ResolvedAssetDirectory>C:\Users\div\Documents\GitHub\ElevatorSample\ElevatorSample\Droid\obj\Debug\__library_projects__\Splat\library_project_imports\assets</ResolvedAssetDirectory>
+    <ResolvedAssetDirectory>C:\Users\div\Documents\GitHub\ElevatorSample\ElevatorSample\Droid\obj\Debug\__library_projects__\Xamarin.Forms.Platform.Android\library_project_imports\assets</ResolvedAssetDirectory>
   </ResolvedAssetDirectories>
   <ResolvedEnvironmentFiles />
   <ResolvedResourceDirectoryStamps>
-    <ResolvedResourceDirectoryStamp>/Users/divikiranravela/GitHub/ElevatorSample/ElevatorSample/Droid/obj/Debug/__library_projects__/Xamarin.Forms.Platform.Android.stamp</ResolvedResourceDirectoryStamp>
+    <ResolvedResourceDirectoryStamp>C:\Users\div\Documents\GitHub\ElevatorSample\ElevatorSample\Droid\obj\Debug\__library_projects__\Acr.Support.Android.stamp</ResolvedResourceDirectoryStamp>
+    <ResolvedResourceDirectoryStamp>C:\Users\div\Documents\GitHub\ElevatorSample\ElevatorSample\Droid\obj\Debug\__library_projects__\Acr.UserDialogs.stamp</ResolvedResourceDirectoryStamp>
+    <ResolvedResourceDirectoryStamp>C:\Users\div\Documents\GitHub\ElevatorSample\ElevatorSample\Droid\obj\Debug\__library_projects__\AndHUD.stamp</ResolvedResourceDirectoryStamp>
+    <ResolvedResourceDirectoryStamp>C:\Users\div\Documents\GitHub\ElevatorSample\ElevatorSample\Droid\obj\Debug\__library_projects__\Splat.stamp</ResolvedResourceDirectoryStamp>
+    <ResolvedResourceDirectoryStamp>C:\Users\div\Documents\GitHub\ElevatorSample\ElevatorSample\Droid\obj\Debug\__library_projects__\Xamarin.Forms.Platform.Android.stamp</ResolvedResourceDirectoryStamp>
   </ResolvedResourceDirectoryStamps>
 </Paths>
