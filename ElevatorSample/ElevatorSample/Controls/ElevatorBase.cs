@@ -43,8 +43,8 @@ namespace ElevatorSample.Controls
                 XAlign = TextAlignment.Center,
                 YAlign = TextAlignment.Center,
             };
-            floor10.SetBinding<ElevatorModel>(Label.BackgroundColorProperty, v => v.ElevatorColor10);
-            floor10.SetBinding<ElevatorModel>(Label.TextProperty, v => v.NoOfPeopleInElevator);
+            floor10.SetBinding<ElevatorModel>(Label.BackgroundColorProperty, v => v.Elevator10.ElevatorColor);
+            floor10.SetBinding<ElevatorModel>(Label.TextProperty, v => v.Elevator10.NoOfPpl);
             TapGestureRecognizer tap = new TapGestureRecognizer();
             tap.SetBinding<ElevatorModel>(TapGestureRecognizer.CommandProperty,v => v.LabelTapped);
             floor10.GestureRecognizers.Add(tap);
@@ -57,8 +57,8 @@ namespace ElevatorSample.Controls
                 XAlign = TextAlignment.Center,
                 YAlign = TextAlignment.Center,
             };
-            floor9.SetBinding<ElevatorModel>(Label.BackgroundColorProperty, v => v.ElevatorColor9);
-            floor9.SetBinding<ElevatorModel>(Label.TextProperty, v => v.NoOfPeopleInElevator);
+            floor9.SetBinding<ElevatorModel>(Label.BackgroundColorProperty, v => v.Elevator9.ElevatorColor);
+            floor9.SetBinding<ElevatorModel>(Label.TextProperty, v => v.Elevator9.NoOfPpl);
             tap = new TapGestureRecognizer();
             tap.SetBinding<ElevatorModel>(TapGestureRecognizer.CommandProperty, v => v.LabelTapped);
             floor9.GestureRecognizers.Add(tap);
@@ -71,8 +71,8 @@ namespace ElevatorSample.Controls
                 XAlign = TextAlignment.Center,
                 YAlign = TextAlignment.Center,
             };
-            floor8.SetBinding<ElevatorModel>(Label.BackgroundColorProperty, v => v.ElevatorColor8);
-            floor8.SetBinding<ElevatorModel>(Label.TextProperty, v => v.NoOfPeopleInElevator);
+            floor8.SetBinding<ElevatorModel>(Label.BackgroundColorProperty, v => v.Elevator8.ElevatorColor);
+            floor8.SetBinding<ElevatorModel>(Label.TextProperty, v => v.Elevator8.NoOfPpl);
             tap = new TapGestureRecognizer();
             tap.SetBinding<ElevatorModel>(TapGestureRecognizer.CommandProperty, v => v.LabelTapped);
             floor8.GestureRecognizers.Add(tap);
@@ -85,8 +85,8 @@ namespace ElevatorSample.Controls
                 XAlign = TextAlignment.Center,
                 YAlign = TextAlignment.Center,
             };
-            floor7.SetBinding<ElevatorModel>(Label.BackgroundColorProperty, v => v.ElevatorColor7);
-            floor7.SetBinding<ElevatorModel>(Label.TextProperty, v => v.NoOfPeopleInElevator);
+            floor7.SetBinding<ElevatorModel>(Label.BackgroundColorProperty, v => v.Elevator7.ElevatorColor);
+            floor7.SetBinding<ElevatorModel>(Label.TextProperty, v => v.Elevator7.NoOfPpl);
             tap = new TapGestureRecognizer();
             tap.SetBinding<ElevatorModel>(TapGestureRecognizer.CommandProperty, v => v.LabelTapped);
             floor7.GestureRecognizers.Add(tap);
@@ -99,8 +99,8 @@ namespace ElevatorSample.Controls
                 XAlign = TextAlignment.Center,
                 YAlign = TextAlignment.Center,
             };
-            floor6.SetBinding<ElevatorModel>(Label.BackgroundColorProperty, v => v.ElevatorColor6);
-            floor6.SetBinding<ElevatorModel>(Label.TextProperty, v => v.NoOfPeopleInElevator);
+            floor6.SetBinding<ElevatorModel>(Label.BackgroundColorProperty, v => v.Elevator6.ElevatorColor);
+            floor6.SetBinding<ElevatorModel>(Label.TextProperty, v => v.Elevator6.NoOfPpl);
             tap = new TapGestureRecognizer();
             tap.SetBinding<ElevatorModel>(TapGestureRecognizer.CommandProperty, v => v.LabelTapped);
             floor6.GestureRecognizers.Add(tap);
@@ -113,8 +113,8 @@ namespace ElevatorSample.Controls
                 XAlign = TextAlignment.Center,
                 YAlign = TextAlignment.Center,
             };
-            floor5.SetBinding<ElevatorModel>(Label.BackgroundColorProperty, v => v.ElevatorColor5);
-            floor5.SetBinding<ElevatorModel>(Label.TextProperty, v => v.NoOfPeopleInElevator);
+            floor5.SetBinding<ElevatorModel>(Label.BackgroundColorProperty, v => v.Elevator5.ElevatorColor);
+            floor5.SetBinding<ElevatorModel>(Label.TextProperty, v => v.Elevator5.NoOfPpl);
             tap = new TapGestureRecognizer();
             tap.SetBinding<ElevatorModel>(TapGestureRecognizer.CommandProperty, v => v.LabelTapped);
             floor5.GestureRecognizers.Add(tap);
@@ -127,8 +127,8 @@ namespace ElevatorSample.Controls
                 XAlign = TextAlignment.Center,
                 YAlign = TextAlignment.Center,
             };
-            floor4.SetBinding<ElevatorModel>(Label.BackgroundColorProperty, v => v.ElevatorColor4);
-            floor4.SetBinding<ElevatorModel>(Label.TextProperty, v => v.NoOfPeopleInElevator);
+            floor4.SetBinding<ElevatorModel>(Label.BackgroundColorProperty, v => v.Elevator4.ElevatorColor);
+            floor4.SetBinding<ElevatorModel>(Label.TextProperty, v => v.Elevator4.NoOfPpl);
             tap = new TapGestureRecognizer();
             tap.SetBinding<ElevatorModel>(TapGestureRecognizer.CommandProperty, v => v.LabelTapped);
             floor4.GestureRecognizers.Add(tap);
@@ -141,8 +141,8 @@ namespace ElevatorSample.Controls
                 XAlign = TextAlignment.Center,
                 YAlign = TextAlignment.Center,
             };
-            floor3.SetBinding<ElevatorModel>(Label.BackgroundColorProperty, v => v.ElevatorColor3);
-            floor3.SetBinding<ElevatorModel>(Label.TextProperty, v => v.NoOfPeopleInElevator);
+            floor3.SetBinding<ElevatorModel>(Label.BackgroundColorProperty, v => v.Elevator3.ElevatorColor);
+            floor3.SetBinding<ElevatorModel>(Label.TextProperty, v => v.Elevator3.NoOfPpl);
             tap = new TapGestureRecognizer();
             tap.SetBinding<ElevatorModel>(TapGestureRecognizer.CommandProperty, v => v.LabelTapped);
             floor3.GestureRecognizers.Add(tap);
@@ -155,8 +155,8 @@ namespace ElevatorSample.Controls
                 XAlign = TextAlignment.Center,
                 YAlign = TextAlignment.Center,
             };
-            floor2.SetBinding<ElevatorModel>(Label.BackgroundColorProperty, v => v.ElevatorColor2);
-            floor2.SetBinding<ElevatorModel>(Label.TextProperty, v => v.NoOfPeopleInElevator);
+            floor2.SetBinding<ElevatorModel>(Label.BackgroundColorProperty, v => v.Elevator2.ElevatorColor);
+            floor2.SetBinding<ElevatorModel>(Label.TextProperty, v => v.Elevator2.NoOfPpl);
             tap = new TapGestureRecognizer();
             tap.SetBinding<ElevatorModel>(TapGestureRecognizer.CommandProperty, v => v.LabelTapped);
             floor2.GestureRecognizers.Add(tap);
@@ -169,8 +169,8 @@ namespace ElevatorSample.Controls
                 XAlign = TextAlignment.Center,
                 YAlign = TextAlignment.Center,
             };
-            floor1.SetBinding<ElevatorModel>(Label.BackgroundColorProperty, v => v.ElevatorColor1);
-            floor1.SetBinding<ElevatorModel>(Label.TextProperty, v => v.NoOfPeopleInElevator);
+            floor1.SetBinding<ElevatorModel>(Label.BackgroundColorProperty, v => v.Elevator1.ElevatorColor);
+            floor1.SetBinding<ElevatorModel>(Label.TextProperty, v => v.Elevator1.NoOfPpl);
             tap = new TapGestureRecognizer();
             tap.SetBinding<ElevatorModel>(TapGestureRecognizer.CommandProperty, v => v.LabelTapped);
             floor1.GestureRecognizers.Add(tap);

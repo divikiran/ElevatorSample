@@ -35,6 +35,7 @@
     <Compile Include="Controls\ElevatorBase.cs" />
     <Compile Include="Controls\ElevatorC.cs" />
     <Compile Include="Controls\ElevatorD.cs" />
+    <Compile Include="Controls\ElevatorFloor.cs" />
     <Compile Include="Controls\Person.cs" />
     <Compile Include="Converters\ColorChangeConverter.cs" />
     <Compile Include="ElevatorSample.cs" />

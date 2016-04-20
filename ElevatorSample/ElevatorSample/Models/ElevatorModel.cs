@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Acr.UserDialogs;
+using ElevatorSample.Controls;
 using ElevatorSample.ViewModels;
 using Xamarin.Forms;
 
@@ -11,127 +13,128 @@ namespace ElevatorSample.Models
     public class ElevatorModel : BaseModel
     {
         public ElevatorPageViewModel ParentModel { get; set; }
-        private Color _elevatorColor10 = Color.White;
-        private Color _elevatorColor9 = Color.White;
-        private Color _elevatorColor8 = Color.White;
-        private Color _elevatorColor7 = Color.White;
-        private Color _elevatorColor6 = Color.White;
-        private Color _elevatorColor5 = Color.White;
-        private Color _elevatorColor4 = Color.White;
-        private Color _elevatorColor3 = Color.White;
-        private Color _elevatorColor2 = Color.White;
-        private Color _elevatorColor1 = Color.White;
+        private ElevatorFloor _elevator10 = new ElevatorFloor(10);
+        private ElevatorFloor _elevator9 = new ElevatorFloor(9);
+        private ElevatorFloor _elevator8 = new ElevatorFloor(8);
+        private ElevatorFloor _elevator7 = new ElevatorFloor(7);
+        private ElevatorFloor _elevator6 = new ElevatorFloor(6);
+        private ElevatorFloor _elevator5 = new ElevatorFloor(5);
+        private ElevatorFloor _elevator4 = new ElevatorFloor(4);
+        private ElevatorFloor _elevator3 = new ElevatorFloor(3);
+        private ElevatorFloor _elevator2 = new ElevatorFloor(2);
+        private ElevatorFloor _elevator1 = new ElevatorFloor(1);
         private string _noOfPeopleInElevator = "0";
+        private List<ElevatorFloor> _elevatorFloors = new List<ElevatorFloor>();
         public int CurrentFloor { get; set; } = 1;
 
         public List<int> FloorsToGo { get; set; }
 
-        public Color ElevatorColor10
+        public ElevatorFloor Elevator10
         {
-            get { return _elevatorColor10; }
+            get { return _elevator10; }
             set
             {
-                _elevatorColor10 = value; 
-                OnPropertyChanged(nameof(ElevatorColor10));
+                _elevator10 = value;
+                OnPropertyChanged(nameof(Elevator10));
             }
         }
 
-        public Color ElevatorColor9
+        public ElevatorFloor Elevator9
         {
-            get { return _elevatorColor9; }
+            get { return _elevator9; }
             set
             {
-                _elevatorColor9 = value;
+                _elevator9 = value;
 
-                OnPropertyChanged(nameof(ElevatorColor9));
+                OnPropertyChanged(nameof(Elevator9));
             }
         }
 
-        public Color ElevatorColor8
+        public ElevatorFloor Elevator8
         {
-            get { return _elevatorColor8; }
+            get { return _elevator8; }
             set
             {
-                _elevatorColor8 = value;
+                _elevator8 = value;
 
-                OnPropertyChanged(nameof(ElevatorColor8));
+                OnPropertyChanged(nameof(Elevator8));
             }
         }
 
-        public Color ElevatorColor7
+        public ElevatorFloor Elevator7
         {
-            get { return _elevatorColor7; }
+            get { return _elevator7; }
             set
             {
-                _elevatorColor7 = value;
+                _elevator7 = value;
 
-                OnPropertyChanged(nameof(ElevatorColor7));
+                OnPropertyChanged(nameof(Elevator7));
             }
         }
 
-        public Color ElevatorColor6
+        public ElevatorFloor Elevator6
         {
-            get { return _elevatorColor6; }
+            get { return _elevator6; }
             set
             {
-                _elevatorColor6 = value;
+                _elevator6 = value;
 
-                OnPropertyChanged(nameof(ElevatorColor6));
+                OnPropertyChanged(nameof(Elevator6));
             }
         }
 
-        public Color ElevatorColor5
+        public ElevatorFloor Elevator5
         {
-            get { return _elevatorColor5; }
+            get { return _elevator5; }
             set
             {
-                _elevatorColor5 = value;
+                _elevator5 = value;
 
-                OnPropertyChanged(nameof(ElevatorColor5));
+                OnPropertyChanged(nameof(Elevator5));
             }
         }
 
-        public Color ElevatorColor4
+        public ElevatorFloor Elevator4
         {
-            get { return _elevatorColor4; }
+            get { return _elevator4; }
             set
             {
-                _elevatorColor4 = value;
+                _elevator4 = value;
 
-                OnPropertyChanged(nameof(ElevatorColor4));
+                OnPropertyChanged(nameof(Elevator4));
             }
         }
 
-        public Color ElevatorColor3
+        public ElevatorFloor Elevator3
         {
-            get { return _elevatorColor3; }
+            get { return _elevator3; }
             set
             {
-                _elevatorColor3 = value;
+                _elevator3 = value;
 
-                OnPropertyChanged(nameof(ElevatorColor3));
+                OnPropertyChanged(nameof(Elevator3));
             }
         }
 
-        public Color ElevatorColor2
+        public ElevatorFloor Elevator2
         {
-            get { return _elevatorColor2; }
+            get { return _elevator2; }
             set
             {
-                _elevatorColor2 = value;
+                _elevator2 = value;
 
-                OnPropertyChanged(nameof(ElevatorColor2));
+                OnPropertyChanged(nameof(Elevator2));
             }
         }
 
-        public Color ElevatorColor1
+        public ElevatorFloor Elevator1
         {
-            get { return _elevatorColor1; }
+            get { return _elevator1; }
             set
             {
-                _elevatorColor1 = value;
+                _elevator1 = value;
 
-                OnPropertyChanged(nameof(ElevatorColor1));
+                OnPropertyChanged(nameof(Elevator1));
             }
         }
 
@@ -140,18 +143,28 @@ namespace ElevatorSample.Models
             get { return _noOfPeopleInElevator; }
             set
             {
-                _noOfPeopleInElevator = value; 
+                _noOfPeopleInElevator = value;
                 OnPropertyChanged(nameof(NoOfPeopleInElevator));
             }
         }
 
         public ICommand LabelTapped { get; set; }
 
+        public List<ElevatorFloor> ElevatorFloors
+        {
+            get { return _elevatorFloors; }
+            set
+            {
+                _elevatorFloors = value;
+                OnPropertyChanged(nameof(ElevatorFloors));
+            }
+        }
+
         public ElevatorModel(string elevatorName, ElevatorPageViewModel parentModel)
         {
+            AssignAllFloors();
             ParentModel = parentModel;
-            FloorsToGo = new List<int>();
-            FloorsToGo.Add(1);
+            FloorsToGo = new List<int> {1};
             LabelTapped = new Command(ShowFloorsToSelect);
             Task.Run(async () =>
             {
@@ -159,13 +172,28 @@ namespace ElevatorSample.Models
             });
         }
 
+        private void AssignAllFloors()
+        {
+            ElevatorFloors.Add(Elevator10);
+            ElevatorFloors.Add(Elevator9);
+            ElevatorFloors.Add(Elevator8);
+            ElevatorFloors.Add(Elevator7);
+            ElevatorFloors.Add(Elevator6);
+            ElevatorFloors.Add(Elevator5);
+            ElevatorFloors.Add(Elevator4);
+            ElevatorFloors.Add(Elevator3);
+            ElevatorFloors.Add(Elevator2);
+            ElevatorFloors.Add(Elevator1);
+        }
+
         private void ShowFloorsToSelect(object obj)
         {
             ActionSheetConfig asc = new ActionSheetConfig().SetTitle("Select Floor");
+
             asc.Add("10", () =>
             {
                 FloorToGo(10);
-            });//, FloorToGo(10));
+            });
             asc.Add("9", () =>
             {
                 FloorToGo(9);
@@ -217,24 +245,80 @@ namespace ElevatorSample.Models
 
         public async Task Elevate()
         {
-            var floorStatus = ParentModel.FloorOne;
-            while (FloorsToGo.Count > 0)
+            await Task.Run(async () =>
             {
-                int k = 10;
-                
+
+                // var floorStatus = ParentModel.FloorOne;
+                while (FloorsToGo.Count > 0)
+                {
+                    var currentNoOfPplInElevator = Convert.ToInt32(this.NoOfPeopleInElevator);
+                    int k = ElevatorFloors.Count;
+                    for (int i = 1; i <= k; ++i)
+                    {
+                        var allFloors = ElevatorFloors.OrderByDescending(o => o.FloorNumber);
+                        var elevatorFloor = ElevatorFloors.FirstOrDefault(f => f.FloorNumber == i);
+                        if (i > 1)
+                        {
+                            await Task.Delay(new TimeSpan(0, 0, 0, 1));
+                            var elevatorFloor1 = ElevatorFloors.FirstOrDefault(f => f.FloorNumber == i - 1);
+                            elevatorFloor1.ElevatorColor = Color.White;
+                            elevatorFloor1.NoOfPpl = string.Empty;
+                        }
+
+                        /*foreach (var elevatorFloor in allFloors)
+                        {*/
+                        var currentFloorModel = ParentModel.AllFloor.FirstOrDefault(f => f.FloorNumber == i);
+                            if (currentFloorModel.NoOfPeople > 0)
+                            {
+                                var totalPpl = currentFloorModel.NoOfPeople;
+                                
+                                    if (currentNoOfPplInElevator <= 20 && currentFloorModel.FloorNumber == i)
+                                    {
+                                        currentNoOfPplInElevator += totalPpl;
+
+                                        currentFloorModel.NoOfPeople = 0;
+                                    }
+                                    else
+                                    {
+                                        break;
+                                    }
+                                
+                            }
+
+                            elevatorFloor.ElevatorColor =  Color.Maroon;
+                            elevatorFloor.NoOfPpl = elevatorFloor.FloorNumber == i
+                                ? currentNoOfPplInElevator.ToString()
+                                : string.Empty;
+                            //elevatorFloor.ElevatorColor = Color.Maroon;
+                        /*}*/
+
+                        if (FloorsToGo.Contains(i))
+                        {
+                            FloorsToGo.Remove(i);
+
+                            if (FloorsToGo.Count == 0)
+                            {
+                                CurrentFloor = i;
+                                break;
+                            }
+                        }
+                    }
+
+
+/*int k = 10;
                 for (int i = CurrentFloor; i <= k; i++)
                 {
                     await Task.Delay(new TimeSpan(0, 0, 0, 2));
-                    ElevatorColor1 = i == 1 ? Color.Maroon : Color.White;
-                    ElevatorColor2 = i == 2 ? Color.Maroon : Color.White;
-                    ElevatorColor3 = i == 3 ? Color.Maroon : Color.White;
-                    ElevatorColor4 = i == 4 ? Color.Maroon : Color.White;
-                    ElevatorColor5 = i == 5 ? Color.Maroon : Color.White;
-                    ElevatorColor6 = i == 6 ? Color.Maroon : Color.White;
-                    ElevatorColor7 = i == 7 ? Color.Maroon : Color.White;
-                    ElevatorColor8 = i == 8 ? Color.Maroon : Color.White;
-                    ElevatorColor9 = i == 9 ? Color.Maroon : Color.White;
-                    ElevatorColor10 = i == 10 ? Color.Maroon : Color.White;
+                    Elevator1 = i == 1 ? Color.Maroon : Color.White;
+                    Elevator2 = i == 2 ? Color.Maroon : Color.White;
+                    Elevator3 = i == 3 ? Color.Maroon : Color.White;
+                    Elevator4 = i == 4 ? Color.Maroon : Color.White;
+                    Elevator5 = i == 5 ? Color.Maroon : Color.White;
+                    Elevator6 = i == 6 ? Color.Maroon : Color.White;
+                    Elevator7 = i == 7 ? Color.Maroon : Color.White;
+                    Elevator8 = i == 8 ? Color.Maroon : Color.White;
+                    Elevator9 = i == 9 ? Color.Maroon : Color.White;
+                    Elevator10 = i == 10 ? Color.Maroon : Color.White;
 
                     switch (i)
                     {
@@ -276,12 +360,13 @@ namespace ElevatorSample.Models
                     {
                         if (floorStatus.NoOfPeople > 0)
                         {
-                            for (int j = 1; j < floorStatus.NoOfPeople; j++)
+                            var totalPpl = floorStatus.NoOfPeople;
+                            for (int j = 1; j <= totalPpl; j++)
                             {
                                 var currentNoOfPplInElevator = Convert.ToInt32(this.NoOfPeopleInElevator);
                                 if (currentNoOfPplInElevator <= 20)
                                 {
-                                    currentNoOfPplInElevator ++;
+                                    currentNoOfPplInElevator++;
                                     this.NoOfPeopleInElevator = currentNoOfPplInElevator.ToString();
                                     floorStatus.NoOfPeople--;
                                 }
@@ -296,7 +381,7 @@ namespace ElevatorSample.Models
                     if (FloorsToGo.Contains(i))
                     {
                         FloorsToGo.Remove(i);
-                        
+
                         if (FloorsToGo.Count == 0)
                         {
                             CurrentFloor = i;
@@ -304,8 +389,10 @@ namespace ElevatorSample.Models
                             break;
                         }
                     }
+                }*/
                 }
-            }
+            });
         }
+
     }
 }
