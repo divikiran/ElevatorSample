@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
+using Acr.UserDialogs;
 using Xamarin.Forms;
 
 namespace ElevatorSample.ViewModels
@@ -16,7 +18,6 @@ namespace ElevatorSample.ViewModels
         private ElevatorModel _elevatorModelC;
         private ElevatorModel _elevatorModelD;
         private string _title;
-        private int _noOfPeople;
         private FloorModel _floorOne = new FloorModel();
         private FloorModel _floorTwo = new FloorModel();
         private FloorModel _floorThree = new FloorModel();
@@ -29,6 +30,7 @@ namespace ElevatorSample.ViewModels
         private FloorModel _floorTen = new FloorModel();
         private List<ElevatorModel> _allElevators = new List<ElevatorModel>();
         private List<FloorModel> _allFloor = new List<FloorModel>();
+
 
         public ElevatorModel ElevatorModelA
         {
@@ -200,18 +202,15 @@ namespace ElevatorSample.ViewModels
                 OnPropertyChanged(nameof(AllElevators));
             }
         }
-
+        
         public ElevatorPageViewModel()
         {
-            _elevatorModelD = new ElevatorModel("ElevatorD", this);
-            _elevatorModelC = new ElevatorModel("ElevatorC", this);
-            _elevatorModelB = new ElevatorModel("ElevatorB",this);
-            _elevatorModelA = new ElevatorModel("ElevatorA", this);
-            AllElevators.Add(ElevatorModelA);
-            AllElevators.Add(ElevatorModelB);
-            AllElevators.Add(ElevatorModelC);
-            AllElevators.Add(ElevatorModelD);
+            SetAllElevators();
+            SetAllFloors();
+        }
 
+        private void SetAllFloors()
+        {
             _floorOne.FloorNumber = 1;
             _floorTwo.FloorNumber = 2;
             _floorThree.FloorNumber = 3;
@@ -222,6 +221,7 @@ namespace ElevatorSample.ViewModels
             _floorSeven.FloorNumber = 8;
             _floorNine.FloorNumber = 9;
             _floorTen.FloorNumber = 10;
+
             AllFloor.Add(FloorOne);
             AllFloor.Add(FloorTwo);
             AllFloor.Add(FloorThree);
@@ -232,6 +232,19 @@ namespace ElevatorSample.ViewModels
             AllFloor.Add(FloorEight);
             AllFloor.Add(FloorNine);
             AllFloor.Add(FloorTen);
+        }
+
+        private void SetAllElevators()
+        {
+            _elevatorModelD = new ElevatorModel("ElevatorD", this);
+            _elevatorModelC = new ElevatorModel("ElevatorC", this);
+            _elevatorModelB = new ElevatorModel("ElevatorB", this);
+            _elevatorModelA = new ElevatorModel("ElevatorA", this);
+
+            AllElevators.Add(ElevatorModelA);
+            AllElevators.Add(ElevatorModelB);
+            AllElevators.Add(ElevatorModelC);
+            AllElevators.Add(ElevatorModelD);
         }
     }
 }

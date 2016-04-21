@@ -10,8 +10,13 @@ namespace ElevatorSample
             get;
             set;
         }
+
+        public FloorModel FloorModel { get; set; }
         public Floor(int floorNumber)
         {
+            FloorModel = new FloorModel {FloorNumber = floorNumber};
+            BindingContext = FloorModel;
+
             FloorNumber = floorNumber;
             this.HorizontalOptions = LayoutOptions.StartAndExpand;
             this.VerticalOptions = LayoutOptions.Start;
@@ -51,6 +56,9 @@ namespace ElevatorSample
                 YAlign = TextAlignment.Center,
                 ClassId = "Floor" + FloorNumber.ToString(),
             };
+            TapGestureRecognizer tap = new TapGestureRecognizer();
+            tap.SetBinding<FloorModel>(TapGestureRecognizer.CommandProperty, v => v.LabelTapped);
+            floorLabel.GestureRecognizers.Add(tap);
             floorStack.Children.Add(floorLabel);
 
             var noOfPeople = new Editor()
@@ -67,8 +75,6 @@ namespace ElevatorSample
             (
               floorStack
             );
-
-           
         }
     }
 }

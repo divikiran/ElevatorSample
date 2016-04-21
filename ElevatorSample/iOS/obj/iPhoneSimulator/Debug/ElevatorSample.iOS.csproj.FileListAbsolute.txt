@@ -24,5 +24,6 @@ C:\Users\div\Documents\GitHub\ElevatorSample\ElevatorSample\iOS\bin\iPhoneSimula
 C:\Users\div\Documents\GitHub\ElevatorSample\ElevatorSample\iOS\bin\iPhoneSimulator\Debug\Acr.UserDialogs.Interface.pdb
 C:\Users\div\Documents\GitHub\ElevatorSample\ElevatorSample\iOS\bin\iPhoneSimulator\Debug\Acr.UserDialogs.Interface.dll.mdb
 C:\Users\div\Documents\GitHub\ElevatorSample\ElevatorSample\iOS\bin\iPhoneSimulator\Debug\Splat.dll.mdb
+C:\Users\div\Documents\GitHub\ElevatorSample\ElevatorSample\iOS\bin\iPhoneSimulator\Debug\PubSub.dll
 C:\Users\div\Documents\GitHub\ElevatorSample\ElevatorSample\iOS\obj\iPhoneSimulator\Debug\ElevatorSampleiOS.exe.mdb
 C:\Users\div\Documents\GitHub\ElevatorSample\ElevatorSample\iOS\bin\iPhoneSimulator\Debug\ElevatorSampleiOS.exe.mdb

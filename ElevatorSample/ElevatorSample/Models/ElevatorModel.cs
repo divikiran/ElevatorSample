@@ -6,6 +6,7 @@ using System.Windows.Input;
 using Acr.UserDialogs;
 using ElevatorSample.Controls;
 using ElevatorSample.ViewModels;
+using PubSub;
 using Xamarin.Forms;
 
 namespace ElevatorSample.Models
@@ -26,8 +27,6 @@ namespace ElevatorSample.Models
         private string _noOfPeopleInElevator = "0";
         private List<ElevatorFloor> _elevatorFloors = new List<ElevatorFloor>();
         public int CurrentFloor { get; set; } = 1;
-
-        public List<int> FloorsToGo { get; set; }
 
         public ElevatorFloor Elevator10
         {
@@ -148,8 +147,6 @@ namespace ElevatorSample.Models
             }
         }
 
-        public ICommand LabelTapped { get; set; }
-
         public List<ElevatorFloor> ElevatorFloors
         {
             get { return _elevatorFloors; }
@@ -160,15 +157,29 @@ namespace ElevatorSample.Models
             }
         }
 
+        public List<FloorsToGo> FloorsToGo { get; set; }
+
         public ElevatorModel(string elevatorName, ElevatorPageViewModel parentModel)
         {
             AssignAllFloors();
             ParentModel = parentModel;
-            FloorsToGo = new List<int> {1};
-            LabelTapped = new Command(ShowFloorsToSelect);
-            Task.Run(async () =>
+            FloorsToGo = new List<FloorsToGo>();
+
+            this.Subscribe<FloorsToGo>(async (c) =>
             {
-                await Elevate();
+                FloorsToGo.Add(c);
+                foreach (var floorsToGo in FloorsToGo)
+                {
+                    await Elevate(floorsToGo).ContinueWith((cc) =>
+                    {
+                        if (!cc.IsCompleted) return;
+                        FloorsToGo.Remove(floorsToGo);
+                        if (FloorsToGo.Count == 0)
+                        {
+                            CurrentFloor = Convert.ToInt32(floorsToGo.FloorNumber);
+                        }
+                    });
+                }
             });
         }
 
@@ -186,76 +197,16 @@ namespace ElevatorSample.Models
             ElevatorFloors.Add(Elevator1);
         }
 
-        private void ShowFloorsToSelect(object obj)
-        {
-            ActionSheetConfig asc = new ActionSheetConfig().SetTitle("Select Floor");
-
-            asc.Add("10", () =>
-            {
-                FloorToGo(10);
-            });
-            asc.Add("9", () =>
-            {
-                FloorToGo(9);
-            });
-            asc.Add("8", () =>
-            {
-                FloorToGo(8);
-            });
-            asc.Add("7", () =>
-            {
-                FloorToGo(7);
-            });
-            asc.Add("6", () =>
-            {
-                FloorToGo(6);
-            });
-            asc.Add("5", () =>
-            {
-                FloorToGo(5);
-            });
-            asc.Add("4", () =>
-            {
-                FloorToGo(4);
-            });
-            asc.Add("3", () =>
-            {
-                FloorToGo(3);
-            });
-            asc.Add("2", () =>
-            {
-                FloorToGo(2);
-            });
-            asc.Add("1", () =>
-            {
-                FloorToGo(1);
-            });
-            asc.SetCancel("Cancel");
-            UserDialogs.Instance.ActionSheet(asc);
-        }
-
-        private void FloorToGo(int i)
-        {
-            FloorsToGo.Add(i);
-            Task.Run(async () =>
-            {
-                await Elevate();
-            });
-        }
-
-        public async Task Elevate()
+        public async Task Elevate(FloorsToGo floorsToGo)
         {
             await Task.Run(async () =>
             {
-
-                // var floorStatus = ParentModel.FloorOne;
-                while (FloorsToGo.Count > 0)
+                if (floorsToGo != null)
                 {
-                    var currentNoOfPplInElevator = Convert.ToInt32(this.NoOfPeopleInElevator);
+                    var currentNoOfPplInElevator = Convert.ToInt32(floorsToGo.NoOfPeople);
                     int k = ElevatorFloors.Count;
                     for (int i = 1; i <= k; ++i)
                     {
-                        var allFloors = ElevatorFloors.OrderByDescending(o => o.FloorNumber);
                         var elevatorFloor = ElevatorFloors.FirstOrDefault(f => f.FloorNumber == i);
                         if (i > 1)
                         {
@@ -265,134 +216,41 @@ namespace ElevatorSample.Models
                             elevatorFloor1.NoOfPpl = string.Empty;
                         }
 
-                        /*foreach (var elevatorFloor in allFloors)
-                        {*/
-                        var currentFloorModel = ParentModel.AllFloor.FirstOrDefault(f => f.FloorNumber == i);
-                            if (currentFloorModel.NoOfPeople > 0)
-                            {
-                                var totalPpl = currentFloorModel.NoOfPeople;
-                                
-                                    if (currentNoOfPplInElevator <= 20 && currentFloorModel.FloorNumber == i)
-                                    {
-                                        currentNoOfPplInElevator += totalPpl;
-
-                                        currentFloorModel.NoOfPeople = 0;
-                                    }
-                                    else
-                                    {
-                                        break;
-                                    }
-                                
-                            }
-
-                            elevatorFloor.ElevatorColor =  Color.Maroon;
-                            elevatorFloor.NoOfPpl = elevatorFloor.FloorNumber == i
-                                ? currentNoOfPplInElevator.ToString()
-                                : string.Empty;
-                            //elevatorFloor.ElevatorColor = Color.Maroon;
-                        /*}*/
-
-                        if (FloorsToGo.Contains(i))
+                        
+                        //var currentFloorModel = ParentModel.AllFloor.FirstOrDefault(f => f.FloorNumber == i);
+                        if (floorsToGo.NoOfPeople > 0)
                         {
-                            FloorsToGo.Remove(i);
-
-                            if (FloorsToGo.Count == 0)
-                            {
-                                CurrentFloor = i;
-                                break;
-                            }
-                        }
-                    }
-
-
-/*int k = 10;
-                for (int i = CurrentFloor; i <= k; i++)
-                {
-                    await Task.Delay(new TimeSpan(0, 0, 0, 2));
-                    Elevator1 = i == 1 ? Color.Maroon : Color.White;
-                    Elevator2 = i == 2 ? Color.Maroon : Color.White;
-                    Elevator3 = i == 3 ? Color.Maroon : Color.White;
-                    Elevator4 = i == 4 ? Color.Maroon : Color.White;
-                    Elevator5 = i == 5 ? Color.Maroon : Color.White;
-                    Elevator6 = i == 6 ? Color.Maroon : Color.White;
-                    Elevator7 = i == 7 ? Color.Maroon : Color.White;
-                    Elevator8 = i == 8 ? Color.Maroon : Color.White;
-                    Elevator9 = i == 9 ? Color.Maroon : Color.White;
-                    Elevator10 = i == 10 ? Color.Maroon : Color.White;
-
-                    switch (i)
-                    {
-                        case 1:
-                            floorStatus = ParentModel.FloorOne;
-                            break;
-                        case 2:
-                            floorStatus = ParentModel.FloorTwo;
-                            break;
-                        case 3:
-                            floorStatus = ParentModel.FloorThree;
-                            break;
-                        case 4:
-                            floorStatus = ParentModel.FloorFour;
-                            break;
-                        case 5:
-                            floorStatus = ParentModel.FloorFive;
-                            break;
-                        case 6:
-                            floorStatus = ParentModel.FloorSix;
-                            break;
-                        case 7:
-                            floorStatus = ParentModel.FloorSeven;
-                            break;
-                        case 8:
-                            floorStatus = ParentModel.FloorEight;
-                            break;
-                        case 9:
-                            floorStatus = ParentModel.FloorNine;
-                            break;
-                        case 10:
-                            floorStatus = ParentModel.FloorTen;
-                            break;
-                        default:
-                            break;
-                    }
-
-                    if (floorStatus != null)
-                    {
-                        if (floorStatus.NoOfPeople > 0)
-                        {
-                            var totalPpl = floorStatus.NoOfPeople;
+                            var totalPpl = floorsToGo.NoOfPeople;
                             for (int j = 1; j <= totalPpl; j++)
                             {
-                                var currentNoOfPplInElevator = Convert.ToInt32(this.NoOfPeopleInElevator);
-                                if (currentNoOfPplInElevator <= 20)
+                                if (currentNoOfPplInElevator <= 20 && floorsToGo.FloorNumber == i.ToString())
                                 {
-                                    currentNoOfPplInElevator++;
-                                    this.NoOfPeopleInElevator = currentNoOfPplInElevator.ToString();
-                                    floorStatus.NoOfPeople--;
+                                    ++currentNoOfPplInElevator;
+
+                                    floorsToGo.NoOfPeople--;
                                 }
                                 else
                                 {
                                     break;
                                 }
                             }
+
+                            if (floorsToGo.FloorNumber == i.ToString())
+                            {
+                                break;
+                            }
                         }
+
+                        elevatorFloor.ElevatorColor = Color.Maroon;
+                        elevatorFloor.NoOfPpl = elevatorFloor.FloorNumber == i
+                            ? currentNoOfPplInElevator.ToString()
+                            : string.Empty;
+
+
+                        
                     }
-
-                    if (FloorsToGo.Contains(i))
-                    {
-                        FloorsToGo.Remove(i);
-
-                        if (FloorsToGo.Count == 0)
-                        {
-                            CurrentFloor = i;
-
-                            break;
-                        }
-                    }
-                }*/
                 }
             });
         }
-
     }
 }
