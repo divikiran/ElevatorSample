@@ -31,43 +31,60 @@ namespace ElevatorSample
 
             var floorStack = new StackLayout();
 
-            var floor = new Floor(10);
+            var labelsStack = new StackLayout()
+            {
+                Orientation = StackOrientation.Horizontal
+            };
+            labelsStack.Children.Add(new Label()
+            {
+                Text = "Floor",
+                FontSize = 12
+            });
+            labelsStack.Children.Add(new Label()
+            {
+                Text = "No of People",
+                FontSize = 12,
+
+            });
+            floorStack.Children.Add(labelsStack);
+
+            var floor = new Floor();
             floor.SetBinding<ElevatorPageViewModel>(Floor.BindingContextProperty, v => v.FloorTen);
             floorStack.Children.Add(floor);
 
-            floor = new Floor(9);
+            floor = new Floor();
             floor.SetBinding<ElevatorPageViewModel>(Floor.BindingContextProperty, v => v.FloorNine);
             floorStack.Children.Add(floor);
 
-            floor = new Floor(8);
+            floor = new Floor();
             floor.SetBinding<ElevatorPageViewModel>(Floor.BindingContextProperty, v => v.FloorEight);
             floorStack.Children.Add(floor);
 
-            floor = new Floor(7);
+            floor = new Floor();
             floor.SetBinding<ElevatorPageViewModel>(Floor.BindingContextProperty, v => v.FloorSeven);
             floorStack.Children.Add(floor);
 
-            floor = new Floor(6);
+            floor = new Floor();
             floor.SetBinding<ElevatorPageViewModel>(Floor.BindingContextProperty, v => v.FloorSix);
             floorStack.Children.Add(floor);
             
-            floor = new Floor(5);
+            floor = new Floor();
             floor.SetBinding<ElevatorPageViewModel>(Floor.BindingContextProperty, v => v.FloorFive);
             floorStack.Children.Add(floor);
 
-            floor = new Floor(4);
+            floor = new Floor();
             floor.SetBinding<ElevatorPageViewModel>(Floor.BindingContextProperty, v => v.FloorFour);
             floorStack.Children.Add(floor);
 
-            floor = new Floor(3);
+            floor = new Floor();
             floor.SetBinding<ElevatorPageViewModel>(Floor.BindingContextProperty, v => v.FloorThree);
             floorStack.Children.Add(floor);
 
-            floor = new Floor(2);
+            floor = new Floor();
             floor.SetBinding<ElevatorPageViewModel>(Floor.BindingContextProperty, v => v.FloorTwo);
             floorStack.Children.Add(floor);
 
-            floor = new Floor(1);
+            floor = new Floor();
             floor.SetBinding<ElevatorPageViewModel>(Floor.BindingContextProperty, v => v.FloorOne);
             floorStack.Children.Add(floor);
             

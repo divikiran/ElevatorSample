@@ -11,6 +11,7 @@ namespace ElevatorSample.Controls
     {
         public ElevatorA(string elevatorName) : base(elevatorName)
         {
+            
         }
     }
 }

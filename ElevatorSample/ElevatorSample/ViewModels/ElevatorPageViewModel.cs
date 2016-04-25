@@ -7,32 +7,34 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Acr.UserDialogs;
+using ElevatorSample.Enum;
+using PubSub;
 using Xamarin.Forms;
 
 namespace ElevatorSample.ViewModels
 {
-    public class ElevatorPageViewModel: BaseModel
+    public class ElevatorPageViewModel : BaseModel
     {
-        private ElevatorModel _elevatorModelA;
-        private ElevatorModel _elevatorModelB;
-        private ElevatorModel _elevatorModelC;
-        private ElevatorModel _elevatorModelD;
+        private ElevatorAModel _elevatorModelA;
+        private ElevatorBModel _elevatorModelB;
+        private ElevatorCModel _elevatorModelC;
+        private ElevatorDModel _elevatorModelD;
         private string _title;
-        private FloorModel _floorOne = new FloorModel();
-        private FloorModel _floorTwo = new FloorModel();
-        private FloorModel _floorThree = new FloorModel();
-        private FloorModel _floorFour = new FloorModel();
-        private FloorModel _floorFive = new FloorModel();
-        private FloorModel _floorSix = new FloorModel();
-        private FloorModel _floorSeven = new FloorModel();
-        private FloorModel _floorEight = new FloorModel();
-        private FloorModel _floorNine = new FloorModel();
-        private FloorModel _floorTen = new FloorModel();
+        private FloorModel _floorOne = new FloorModel(1);
+        private FloorModel _floorTwo = new FloorModel(2);
+        private FloorModel _floorThree = new FloorModel(3);
+        private FloorModel _floorFour = new FloorModel(4);
+        private FloorModel _floorFive = new FloorModel(5);
+        private FloorModel _floorSix = new FloorModel(6);
+        private FloorModel _floorSeven = new FloorModel(7);
+        private FloorModel _floorEight = new FloorModel(8);
+        private FloorModel _floorNine = new FloorModel(9);
+        private FloorModel _floorTen = new FloorModel(10);
         private List<ElevatorModel> _allElevators = new List<ElevatorModel>();
         private List<FloorModel> _allFloor = new List<FloorModel>();
 
 
-        public ElevatorModel ElevatorModelA
+        public ElevatorAModel ElevatorModelA
         {
             get { return _elevatorModelA; }
             set
@@ -42,7 +44,7 @@ namespace ElevatorSample.ViewModels
             }
         }
 
-        public ElevatorModel ElevatorModelB
+        public ElevatorBModel ElevatorModelB
         {
             get { return _elevatorModelB; }
             set
@@ -52,7 +54,7 @@ namespace ElevatorSample.ViewModels
             }
         }
 
-        public ElevatorModel ElevatorModelC
+        public ElevatorCModel ElevatorModelC
         {
             get { return _elevatorModelC; }
             set
@@ -62,7 +64,7 @@ namespace ElevatorSample.ViewModels
             }
         }
 
-        public ElevatorModel ElevatorModelD
+        public ElevatorDModel ElevatorModelD
         {
             get { return _elevatorModelD; }
             set
@@ -77,7 +79,7 @@ namespace ElevatorSample.ViewModels
             get { return _title; }
             set
             {
-                _title = value; 
+                _title = value;
                 OnPropertyChanged(nameof(Title));
             }
         }
@@ -87,7 +89,7 @@ namespace ElevatorSample.ViewModels
             get { return _floorOne; }
             set
             {
-                _floorOne = value; 
+                _floorOne = value;
                 OnPropertyChanged(nameof(FloorOne));
             }
         }
@@ -97,7 +99,7 @@ namespace ElevatorSample.ViewModels
             get { return _floorTwo; }
             set
             {
-                _floorTwo = value; 
+                _floorTwo = value;
                 OnPropertyChanged(nameof(FloorTwo));
             }
         }
@@ -107,7 +109,7 @@ namespace ElevatorSample.ViewModels
             get { return _floorThree; }
             set
             {
-                _floorThree = value; 
+                _floorThree = value;
                 OnPropertyChanged(nameof(FloorThree));
             }
         }
@@ -117,7 +119,7 @@ namespace ElevatorSample.ViewModels
             get { return _floorFour; }
             set
             {
-                _floorFour = value; 
+                _floorFour = value;
                 OnPropertyChanged(nameof(FloorFour));
             }
         }
@@ -127,7 +129,7 @@ namespace ElevatorSample.ViewModels
             get { return _floorFive; }
             set
             {
-                _floorFive = value; 
+                _floorFive = value;
                 OnPropertyChanged(nameof(FloorFive));
             }
 
@@ -178,7 +180,7 @@ namespace ElevatorSample.ViewModels
             get { return _floorTen; }
             set
             {
-                _floorTen = value; 
+                _floorTen = value;
                 OnPropertyChanged(nameof(FloorTen));
             }
         }
@@ -188,7 +190,7 @@ namespace ElevatorSample.ViewModels
             get { return _allFloor; }
             set
             {
-                _allFloor = value; 
+                _allFloor = value;
                 OnPropertyChanged(nameof(AllFloor));
             }
         }
@@ -198,15 +200,9 @@ namespace ElevatorSample.ViewModels
             get { return _allElevators; }
             set
             {
-                _allElevators = value; 
+                _allElevators = value;
                 OnPropertyChanged(nameof(AllElevators));
             }
-        }
-        
-        public ElevatorPageViewModel()
-        {
-            SetAllElevators();
-            SetAllFloors();
         }
 
         private void SetAllFloors()
@@ -217,8 +213,8 @@ namespace ElevatorSample.ViewModels
             _floorFour.FloorNumber = 4;
             _floorFive.FloorNumber = 5;
             _floorSix.FloorNumber = 6;
-            _floorEight.FloorNumber = 7;
-            _floorSeven.FloorNumber = 8;
+            _floorSeven.FloorNumber = 7;
+            _floorEight.FloorNumber = 8;
             _floorNine.FloorNumber = 9;
             _floorTen.FloorNumber = 10;
 
@@ -236,15 +232,63 @@ namespace ElevatorSample.ViewModels
 
         private void SetAllElevators()
         {
-            _elevatorModelD = new ElevatorModel("ElevatorD", this);
-            _elevatorModelC = new ElevatorModel("ElevatorC", this);
-            _elevatorModelB = new ElevatorModel("ElevatorB", this);
-            _elevatorModelA = new ElevatorModel("ElevatorA", this);
+
+            ElevatorModelA = new ElevatorAModel();
+            ElevatorModelB = new ElevatorBModel();
+            ElevatorModelC = new ElevatorCModel();
+            ElevatorModelD = new ElevatorDModel();
 
             AllElevators.Add(ElevatorModelA);
             AllElevators.Add(ElevatorModelB);
             AllElevators.Add(ElevatorModelC);
             AllElevators.Add(ElevatorModelD);
+        }
+
+        public ElevatorPageViewModel()
+        {
+            SetAllElevators();
+            SetAllFloors();
+            ElevatorController();
+        }
+
+        public void ElevatorController()
+        {
+            this.Subscribe<FloorsToGo>(async (floorParameter) =>
+            {
+                var selectedFloor = floorParameter;
+                if (!string.IsNullOrWhiteSpace(selectedFloor.FloorSelected))
+                {
+                    var allStoppedElevators =
+                        AllElevators.Where(w => w.ElevatorCurrentStatus == ElevatorCurrentStatus.Stopped).ToList();
+                    List<int> elevatorsStoppedOnFloor = new List<int>();
+                    foreach (var allStoppedElevator in allStoppedElevators)
+                    {
+                        elevatorsStoppedOnFloor.Add(allStoppedElevator.StoppedOnFloor);
+                    }
+
+                    int closestFloorNumber =
+                        elevatorsStoppedOnFloor.Aggregate(
+                            (x, y) =>
+                                Math.Abs(x - selectedFloor.BoardOnFloor.FloorNumber) <
+                                Math.Abs(y - selectedFloor.BoardOnFloor.FloorNumber)
+                                    ? x
+                                    : y);
+
+                    var closestElevator = allStoppedElevators.FirstOrDefault(w => w.StoppedOnFloor == closestFloorNumber);
+
+                    await closestElevator.Engine(selectedFloor);
+
+                    //if (closestElevator.ElevatorCurrentStatus == ElevatorCurrentStatus.Stopped)
+                    //{
+                    //    if (closestElevator.StoppedOnFloor > Convert.ToInt32(selectedFloor.PplFromFloor))
+                    //    {
+                    //        await closestElevator.Desend(Convert.ToInt32(closestElevator.StoppedOnFloor), selectedFloor);
+                    //    }
+
+                    //    await closestElevator.Elevate(selectedFloor);
+                    //}
+                }
+            });
         }
     }
 }

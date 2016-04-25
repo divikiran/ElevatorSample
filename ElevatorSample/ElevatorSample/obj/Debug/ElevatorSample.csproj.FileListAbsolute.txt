@@ -11,7 +11,9 @@ C:\Users\div\Documents\GitHub\ElevatorSample\ElevatorSample\ElevatorSample\bin\D
 C:\Users\div\Documents\GitHub\ElevatorSample\ElevatorSample\ElevatorSample\bin\Debug\Splat.dll
 C:\Users\div\Documents\GitHub\ElevatorSample\ElevatorSample\ElevatorSample\bin\Debug\Acr.UserDialogs.pdb
 C:\Users\div\Documents\GitHub\ElevatorSample\ElevatorSample\ElevatorSample\bin\Debug\Acr.UserDialogs.Interface.pdb
-C:\Users\div\Documents\GitHub\ElevatorSample\ElevatorSample\ElevatorSample\obj\Debug\ElevatorSample.csprojResolveAssemblyReference.cache
 C:\Users\div\Documents\GitHub\ElevatorSample\ElevatorSample\ElevatorSample\bin\Debug\PubSub.dll
+C:\Users\div\Documents\GitHub\ElevatorSample\ElevatorSample\ElevatorSample\obj\Debug\ElevatorSample.csprojResolveAssemblyReference.cache
+C:\Users\div\Documents\GitHub\ElevatorSample\ElevatorSample\ElevatorSample\obj\Debug\ElevatorSample.dll.mdb
+C:\Users\div\Documents\GitHub\ElevatorSample\ElevatorSample\ElevatorSample\bin\Debug\ElevatorSample.dll.mdb
 C:\Users\div\Documents\GitHub\ElevatorSample\ElevatorSample\ElevatorSample\obj\Debug\ElevatorSample.dll.mdb
 C:\Users\div\Documents\GitHub\ElevatorSample\ElevatorSample\ElevatorSample\bin\Debug\ElevatorSample.dll.mdb

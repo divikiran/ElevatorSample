@@ -65,12 +65,20 @@
     <ConsolePause>false</ConsolePause>
     <MtouchArch>ARMv7, ARM64</MtouchArch>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
-    <MtouchFloat32>true</MtouchFloat32>
-    <MtouchUseRefCounting>true</MtouchUseRefCounting>
-    <MtouchDebug>true</MtouchDebug>
-    <DeviceSpecificBuild>true</DeviceSpecificBuild>
+    <MtouchFloat32>True</MtouchFloat32>
+    <MtouchUseRefCounting>True</MtouchUseRefCounting>
+    <MtouchDebug>True</MtouchDebug>
+    <DeviceSpecificBuild>True</DeviceSpecificBuild>
     <CodesignKey>iPhone Developer</CodesignKey>
-    <MtouchUseSGen>true</MtouchUseSGen>
+    <MtouchUseSGen>True</MtouchUseSGen>
+    <MtouchSdkVersion>9.3</MtouchSdkVersion>
+    <MtouchLink>None</MtouchLink>
+    <MtouchProfiling>False</MtouchProfiling>
+    <MtouchFastDev>False</MtouchFastDev>
+    <MtouchUseLlvm>False</MtouchUseLlvm>
+    <MtouchUseThumb>False</MtouchUseThumb>
+    <OptimizePNGs>True</OptimizePNGs>
+    <MtouchI18n />
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Acr.Support.iOS, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">

@@ -22,7 +22,6 @@ C:\Users\div\Documents\GitHub\ElevatorSample\ElevatorSample\Droid\bin\Debug\Acr.
 C:\Users\div\Documents\GitHub\ElevatorSample\ElevatorSample\Droid\bin\Debug\Splat.dll.mdb
 C:\Users\div\Documents\GitHub\ElevatorSample\ElevatorSample\Droid\bin\Debug\Xamarin.Forms.Core.xml
 C:\Users\div\Documents\GitHub\ElevatorSample\ElevatorSample\Droid\bin\Debug\Xamarin.Forms.Xaml.xml
-C:\Users\div\Documents\GitHub\ElevatorSample\ElevatorSample\Droid\obj\Debug\ElevatorSample.Droid.csprojResolveAssemblyReference.cache
 C:\Users\div\Documents\GitHub\ElevatorSample\ElevatorSample\Droid\obj\Debug\ElevatorSample.Droid.dll
 C:\Users\div\Documents\GitHub\ElevatorSample\ElevatorSample\Droid\obj\Debug\ElevatorSample.Droid.pdb
 C:\Users\div\Documents\GitHub\ElevatorSample\ElevatorSample\Droid\obj\Debug\android\bin\com.companyname.elevatorsample.apk
@@ -32,5 +31,7 @@ C:\Users\div\Documents\GitHub\ElevatorSample\ElevatorSample\Droid\obj\Debug\res\
 C:\Users\div\Documents\GitHub\ElevatorSample\ElevatorSample\Droid\obj\Debug\res\drawable-xxhdpi\icon.png
 C:\Users\div\Documents\GitHub\ElevatorSample\ElevatorSample\Droid\obj\Debug\R.cs.flag
 C:\Users\div\Documents\GitHub\ElevatorSample\ElevatorSample\Droid\obj\Debug\uploadflags.txt
+C:\Users\div\Documents\GitHub\ElevatorSample\ElevatorSample\Droid\bin\Debug\PubSub.dll
+C:\Users\div\Documents\GitHub\ElevatorSample\ElevatorSample\Droid\obj\Debug\ElevatorSample.Droid.csprojResolveAssemblyReference.cache
 C:\Users\div\Documents\GitHub\ElevatorSample\ElevatorSample\Droid\obj\Debug\ElevatorSample.Droid.dll.mdb
 C:\Users\div\Documents\GitHub\ElevatorSample\ElevatorSample\Droid\bin\Debug\ElevatorSample.Droid.dll.mdb

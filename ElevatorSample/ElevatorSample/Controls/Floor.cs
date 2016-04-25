@@ -5,57 +5,26 @@ namespace ElevatorSample
 {
     public class Floor : StackLayout
     {
-        public int FloorNumber
-        {
-            get;
-            set;
-        }
-
         public FloorModel FloorModel { get; set; }
-        public Floor(int floorNumber)
+        public Floor()
         {
-            FloorModel = new FloorModel {FloorNumber = floorNumber};
-            BindingContext = FloorModel;
-
-            FloorNumber = floorNumber;
             this.HorizontalOptions = LayoutOptions.StartAndExpand;
             this.VerticalOptions = LayoutOptions.Start;
             this.Orientation = StackOrientation.Vertical;
-
-            if (FloorNumber == 10)
-            {
-                var labelsStack = new StackLayout()
-                {
-                    Orientation = StackOrientation.Horizontal
-                };
-                labelsStack.Children.Add(new Label()
-                {
-                    Text = "Floor",
-                    FontSize = 12
-                });
-                labelsStack.Children.Add(new Label()
-                {
-                    Text = "No of People",
-                    FontSize = 12,
-                    
-                });
-                this.Children.Add(labelsStack);
-            }
 
             var floorStack = new StackLayout() {
                 Orientation = StackOrientation.Horizontal
             };
             var floorLabel = new Label()
             {
-                Text = FloorNumber.ToString(),
                 TextColor = Color.White,
                 BackgroundColor = Color.Blue,
                 HeightRequest = 30,
                 WidthRequest = 30,
                 XAlign = TextAlignment.Center,
                 YAlign = TextAlignment.Center,
-                ClassId = "Floor" + FloorNumber.ToString(),
             };
+            floorLabel.SetBinding<FloorModel>(Label.TextProperty, v => v.FloorNumber);
             TapGestureRecognizer tap = new TapGestureRecognizer();
             tap.SetBinding<FloorModel>(TapGestureRecognizer.CommandProperty, v => v.LabelTapped);
             floorLabel.GestureRecognizers.Add(tap);

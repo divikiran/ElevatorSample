@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.ServiceModel;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Acr.UserDialogs;
 using ElevatorSample.Controls;
+using ElevatorSample.Enum;
 using ElevatorSample.ViewModels;
 using PubSub;
 using Xamarin.Forms;
@@ -13,127 +15,119 @@ namespace ElevatorSample.Models
 {
     public class ElevatorModel : BaseModel
     {
-        public ElevatorPageViewModel ParentModel { get; set; }
-        private ElevatorFloor _elevator10 = new ElevatorFloor(10);
-        private ElevatorFloor _elevator9 = new ElevatorFloor(9);
-        private ElevatorFloor _elevator8 = new ElevatorFloor(8);
-        private ElevatorFloor _elevator7 = new ElevatorFloor(7);
-        private ElevatorFloor _elevator6 = new ElevatorFloor(6);
-        private ElevatorFloor _elevator5 = new ElevatorFloor(5);
-        private ElevatorFloor _elevator4 = new ElevatorFloor(4);
-        private ElevatorFloor _elevator3 = new ElevatorFloor(3);
-        private ElevatorFloor _elevator2 = new ElevatorFloor(2);
-        private ElevatorFloor _elevator1 = new ElevatorFloor(1);
+        public ElevatorCurrentStatus ElevatorCurrentStatus { get; set; } = ElevatorCurrentStatus.Stopped;
+        private ElevatorFloor _elevatorFloor10 = new ElevatorFloor(10);
+        private ElevatorFloor _elevatorFloor9 = new ElevatorFloor(9);
+        private ElevatorFloor _elevatorFloor8 = new ElevatorFloor(8);
+        private ElevatorFloor _elevatorFloor7 = new ElevatorFloor(7);
+        private ElevatorFloor _elevatorFloor6 = new ElevatorFloor(6);
+        private ElevatorFloor _elevatorFloor5 = new ElevatorFloor(5);
+        private ElevatorFloor _elevatorFloor4 = new ElevatorFloor(4);
+        private ElevatorFloor _elevatorFloor3 = new ElevatorFloor(3);
+        private ElevatorFloor _elevatorFloor2 = new ElevatorFloor(2);
+        private ElevatorFloor _elevatorFloor1 = new ElevatorFloor(1);
         private string _noOfPeopleInElevator = "0";
         private List<ElevatorFloor> _elevatorFloors = new List<ElevatorFloor>();
-        public int CurrentFloor { get; set; } = 1;
+        private int _stoppedOnFloor;
 
-        public ElevatorFloor Elevator10
+
+        public ElevatorFloor ElevatorFloor10
         {
-            get { return _elevator10; }
+            get { return _elevatorFloor10; }
             set
             {
-                _elevator10 = value;
-                OnPropertyChanged(nameof(Elevator10));
+                _elevatorFloor10 = value;
+                OnPropertyChanged(nameof(ElevatorFloor10));
             }
         }
 
-        public ElevatorFloor Elevator9
+        public ElevatorFloor ElevatorFloor9
         {
-            get { return _elevator9; }
+            get { return _elevatorFloor9; }
             set
             {
-                _elevator9 = value;
-
-                OnPropertyChanged(nameof(Elevator9));
+                _elevatorFloor9 = value;
+                OnPropertyChanged(nameof(ElevatorFloor9));
             }
         }
 
-        public ElevatorFloor Elevator8
+        public ElevatorFloor ElevatorFloor8
         {
-            get { return _elevator8; }
+            get { return _elevatorFloor8; }
             set
             {
-                _elevator8 = value;
-
-                OnPropertyChanged(nameof(Elevator8));
+                _elevatorFloor8 = value;
+                OnPropertyChanged(nameof(ElevatorFloor8));
             }
         }
 
-        public ElevatorFloor Elevator7
+        public ElevatorFloor ElevatorFloor7
         {
-            get { return _elevator7; }
+            get { return _elevatorFloor7; }
             set
             {
-                _elevator7 = value;
-
-                OnPropertyChanged(nameof(Elevator7));
+                _elevatorFloor7 = value;
+                OnPropertyChanged(nameof(ElevatorFloor7));
             }
         }
 
-        public ElevatorFloor Elevator6
+        public ElevatorFloor ElevatorFloor6
         {
-            get { return _elevator6; }
+            get { return _elevatorFloor6; }
             set
             {
-                _elevator6 = value;
-
-                OnPropertyChanged(nameof(Elevator6));
+                _elevatorFloor6 = value;
+                OnPropertyChanged(nameof(ElevatorFloor6));
             }
         }
 
-        public ElevatorFloor Elevator5
+        public ElevatorFloor ElevatorFloor5
         {
-            get { return _elevator5; }
+            get { return _elevatorFloor5; }
             set
             {
-                _elevator5 = value;
-
-                OnPropertyChanged(nameof(Elevator5));
+                _elevatorFloor5 = value;
+                OnPropertyChanged(nameof(ElevatorFloor5));
             }
         }
 
-        public ElevatorFloor Elevator4
+        public ElevatorFloor ElevatorFloor4
         {
-            get { return _elevator4; }
+            get { return _elevatorFloor4; }
             set
             {
-                _elevator4 = value;
-
-                OnPropertyChanged(nameof(Elevator4));
+                _elevatorFloor4 = value;
+                OnPropertyChanged(nameof(ElevatorFloor4));
             }
         }
 
-        public ElevatorFloor Elevator3
+        public ElevatorFloor ElevatorFloor3
         {
-            get { return _elevator3; }
+            get { return _elevatorFloor3; }
             set
             {
-                _elevator3 = value;
-
-                OnPropertyChanged(nameof(Elevator3));
+                _elevatorFloor3 = value;
+                OnPropertyChanged(nameof(ElevatorFloor3));
             }
         }
 
-        public ElevatorFloor Elevator2
+        public ElevatorFloor ElevatorFloor2
         {
-            get { return _elevator2; }
+            get { return _elevatorFloor2; }
             set
             {
-                _elevator2 = value;
-
-                OnPropertyChanged(nameof(Elevator2));
+                _elevatorFloor2 = value;
+                OnPropertyChanged(nameof(ElevatorFloor2));
             }
         }
 
-        public ElevatorFloor Elevator1
+        public ElevatorFloor ElevatorFloor1
         {
-            get { return _elevator1; }
+            get { return _elevatorFloor1; }
             set
             {
-                _elevator1 = value;
-
-                OnPropertyChanged(nameof(Elevator1));
+                _elevatorFloor1 = value;
+                OnPropertyChanged(nameof(ElevatorFloor1));
             }
         }
 
@@ -159,98 +153,218 @@ namespace ElevatorSample.Models
 
         public List<FloorsToGo> FloorsToGo { get; set; }
 
-        public ElevatorModel(string elevatorName, ElevatorPageViewModel parentModel)
+        public int StoppedOnFloor
         {
-            AssignAllFloors();
-            ParentModel = parentModel;
-            FloorsToGo = new List<FloorsToGo>();
-
-            this.Subscribe<FloorsToGo>(async (c) =>
+            get { return _stoppedOnFloor; }
+            set
             {
-                FloorsToGo.Add(c);
-                foreach (var floorsToGo in FloorsToGo)
+                _stoppedOnFloor = value;
+                OnPropertyChanged(nameof(StoppedOnFloor));
+            }
+        }
+
+        public ElevatorModel()
+        {
+            StoppedOnFloor = 1;
+            AssignAllFloors();
+            Task.Run(async () =>
+            {
+                var floorsToGo = new FloorsToGo()
                 {
-                    await Elevate(floorsToGo).ContinueWith((cc) =>
-                    {
-                        if (!cc.IsCompleted) return;
-                        FloorsToGo.Remove(floorsToGo);
-                        if (FloorsToGo.Count == 0)
-                        {
-                            CurrentFloor = Convert.ToInt32(floorsToGo.FloorNumber);
-                        }
-                    });
-                }
+                    FloorSelected = 1.ToString(),
+                    BoardOnFloor = new FloorModel(1),
+                    PplFromFloor = 1
+                };
+                await Engine(floorsToGo);
             });
         }
 
         private void AssignAllFloors()
         {
-            ElevatorFloors.Add(Elevator10);
-            ElevatorFloors.Add(Elevator9);
-            ElevatorFloors.Add(Elevator8);
-            ElevatorFloors.Add(Elevator7);
-            ElevatorFloors.Add(Elevator6);
-            ElevatorFloors.Add(Elevator5);
-            ElevatorFloors.Add(Elevator4);
-            ElevatorFloors.Add(Elevator3);
-            ElevatorFloors.Add(Elevator2);
-            ElevatorFloors.Add(Elevator1);
+            ElevatorFloors.Add(ElevatorFloor10);
+            ElevatorFloors.Add(ElevatorFloor9);
+            ElevatorFloors.Add(ElevatorFloor8);
+            ElevatorFloors.Add(ElevatorFloor7);
+            ElevatorFloors.Add(ElevatorFloor6);
+            ElevatorFloors.Add(ElevatorFloor5);
+            ElevatorFloors.Add(ElevatorFloor4);
+            ElevatorFloors.Add(ElevatorFloor3);
+            ElevatorFloors.Add(ElevatorFloor2);
+            ElevatorFloors.Add(ElevatorFloor1);
         }
 
+        private bool ElevatorLogic(FloorsToGo floorsToGo, ElevatorFloor elevatorFloor, int i, int currentNoOfPplInElevator)
+        {
+            if (elevatorFloor.FloorNumber >= floorsToGo.PplFromFloor)
+            {
+                elevatorFloor.NoOfPpl = elevatorFloor.FloorNumber == i
+                    ? currentNoOfPplInElevator.ToString()
+                    : string.Empty;
+
+                if (elevatorFloor?.FloorNumber == floorsToGo?.PplFromFloor && floorsToGo.BoardOnFloor != null)
+                {
+                    floorsToGo.BoardOnFloor.NoOfPeople = 0;
+                }
+            }
+
+            elevatorFloor.ElevatorColor = Color.Maroon;
+            if (floorsToGo.FloorSelected == i.ToString())
+            {
+                if (!string.IsNullOrWhiteSpace(elevatorFloor.NoOfPpl))
+                {
+                    StoppedOnFloor = i;
+                    elevatorFloor.NoOfPpl = String.Empty;
+                    ElevatorCurrentStatus = ElevatorCurrentStatus.Stopped;
+                    return true;
+                }
+            }
+            return false;
+        }
+        
         public async Task Elevate(FloorsToGo floorsToGo)
         {
-            await Task.Run(async () =>
+            ElevatorCurrentStatus = ElevatorCurrentStatus.GoingUp;
+            if (floorsToGo != null)
             {
-                if (floorsToGo != null)
+                var currentNoOfPplInElevator = floorsToGo.NoOfPeople;
+                int k = ElevatorFloors.Count;
+                for (int i = StoppedOnFloor; i <= k; ++i)
                 {
-                    var currentNoOfPplInElevator = Convert.ToInt32(floorsToGo.NoOfPeople);
-                    int k = ElevatorFloors.Count;
-                    for (int i = 1; i <= k; ++i)
+                    var elevatorFloor = await ColorTheFloor(i);
+                    if (elevatorFloor.FloorNumber == floorsToGo.BoardOnFloor.FloorNumber)
                     {
-                        var elevatorFloor = ElevatorFloors.FirstOrDefault(f => f.FloorNumber == i);
-                        if (i > 1)
+
+                        elevatorFloor.NoOfPpl = currentNoOfPplInElevator.ToString();
+                        if (Convert.ToInt32(floorsToGo.FloorSelected) > i)
                         {
-                            await Task.Delay(new TimeSpan(0, 0, 0, 1));
-                            var elevatorFloor1 = ElevatorFloors.FirstOrDefault(f => f.FloorNumber == i - 1);
-                            elevatorFloor1.ElevatorColor = Color.White;
-                            elevatorFloor1.NoOfPpl = string.Empty;
+                            StoppedOnFloor = i;
+                            await ElevateToFloor(floorsToGo);
+                            break;
                         }
-
-                        
-                        //var currentFloorModel = ParentModel.AllFloor.FirstOrDefault(f => f.FloorNumber == i);
-                        if (floorsToGo.NoOfPeople > 0)
+                        else
                         {
-                            var totalPpl = floorsToGo.NoOfPeople;
-                            for (int j = 1; j <= totalPpl; j++)
-                            {
-                                if (currentNoOfPplInElevator <= 20 && floorsToGo.FloorNumber == i.ToString())
-                                {
-                                    ++currentNoOfPplInElevator;
-
-                                    floorsToGo.NoOfPeople--;
-                                }
-                                else
-                                {
-                                    break;
-                                }
-                            }
-
-                            if (floorsToGo.FloorNumber == i.ToString())
-                            {
-                                break;
-                            }
+                            StoppedOnFloor = i;
+                            await DesendToFloor(floorsToGo);
+                            break;
                         }
-
-                        elevatorFloor.ElevatorColor = Color.Maroon;
-                        elevatorFloor.NoOfPpl = elevatorFloor.FloorNumber == i
-                            ? currentNoOfPplInElevator.ToString()
-                            : string.Empty;
-
-
-                        
                     }
                 }
-            });
+            }
+        }
+
+        private async Task<ElevatorFloor> ColorTheFloor(int i)
+        {
+            var elevatorFloor = ElevatorFloors.FirstOrDefault(f => f.FloorNumber == i);
+            if (i > 1)
+            {
+                await Task.Delay(new TimeSpan(0, 0, 0, 1));
+                var elevatorFloor1 = ElevatorFloors.FirstOrDefault(f => f.FloorNumber == (i - 1));
+                elevatorFloor1.ElevatorColor = Color.White;
+                elevatorFloor1.NoOfPpl = string.Empty;
+            }
+
+            elevatorFloor.ElevatorColor = Color.Maroon;
+            return elevatorFloor;
+        }
+
+        private async Task ElevateToFloor(FloorsToGo floorsToGo)
+        {
+            int k = ElevatorFloors.Count;
+            floorsToGo.BoardOnFloor.NoOfPeople = 0;
+            for (int i = StoppedOnFloor; i <= k; i++)
+            {
+                var elevatorFloor = await ColorTheFloor(i);
+                elevatorFloor.NoOfPpl = floorsToGo.NoOfPeople.ToString();
+                if (floorsToGo.FloorSelected == i.ToString())
+                {
+                    if (floorsToGo.NoOfPeople > 0)
+                    {
+                        StoppedOnFloor = i;
+                        elevatorFloor.NoOfPpl = String.Empty;
+                        ElevatorCurrentStatus = ElevatorCurrentStatus.Stopped;
+                        break;
+                    }
+                }
+            }
+        }
+
+        private async Task DesendToFloor(FloorsToGo floorsToGo)
+        {
+            var noOfPpl = floorsToGo.NoOfPeople.ToString();
+            floorsToGo.BoardOnFloor.NoOfPeople = 0;
+            for (int i = StoppedOnFloor; i >= 1; --i)
+            {
+                var elevatorFloor = await ColorTheFloorDesend(i);
+                elevatorFloor.NoOfPpl = noOfPpl;
+                if (floorsToGo.FloorSelected == i.ToString())
+                {
+                    if (floorsToGo.NoOfPeople > 0)
+                    {
+                        StoppedOnFloor = i;
+                        elevatorFloor.NoOfPpl = String.Empty;
+                        ElevatorCurrentStatus = ElevatorCurrentStatus.Stopped;
+                        break;
+                    }
+                }
+            }
+        }
+
+        private async Task<ElevatorFloor> ColorTheFloorDesend(int i)
+        {
+            await Task.Delay(new TimeSpan(0, 0, 0, 1));
+            var elevatorFloor1 = ElevatorFloors.FirstOrDefault(f => f.FloorNumber == i + 1);
+            elevatorFloor1.ElevatorColor = Color.White;
+            elevatorFloor1.NoOfPpl = String.Empty;
+
+            var elevatorFloor = ElevatorFloors.FirstOrDefault(f => f.FloorNumber == i);
+            elevatorFloor.ElevatorColor = Color.Maroon;
+            
+            return elevatorFloor;
+        }
+        
+        public async Task Desend(FloorsToGo floorsToGo)
+        {
+            int k = ElevatorFloors.Count;
+            for (int i = StoppedOnFloor; i >= 1; --i)
+            {
+                var elevatorFloor = await ColorTheFloorDesend(i);
+                if (elevatorFloor.FloorNumber == floorsToGo.BoardOnFloor.FloorNumber)
+                {
+                    elevatorFloor.NoOfPpl = floorsToGo.NoOfPeople.ToString();
+                    if (Convert.ToInt32(floorsToGo.FloorSelected) > i)
+                    {
+                        StoppedOnFloor = i;
+                        await ElevateToFloor(floorsToGo);
+                        break;
+                    }
+                    else
+                    {
+                        StoppedOnFloor = i;
+                        await DesendToFloor(floorsToGo);
+                        break;
+                    }
+                }
+                /*if (ElevatorLogic(selectedFloor, elevatorFloor, i, 0))
+                {
+                    break;
+                }*/
+
+                //if (await ElevateAndDecend(selectedFloor, elevatorFloor, i)) break;
+            }
+        }
+        
+        public async Task Engine(FloorsToGo selectedFloor)
+        {
+            if (StoppedOnFloor < selectedFloor.PplFromFloor)
+            {
+                await Elevate(selectedFloor);
+            }
+            else
+            {
+                await Desend(selectedFloor);
+            }
+
+            ElevatorCurrentStatus = ElevatorCurrentStatus.Stopped;
         }
     }
 }

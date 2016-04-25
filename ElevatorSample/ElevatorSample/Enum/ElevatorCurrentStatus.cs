@@ -8,8 +8,8 @@ namespace ElevatorSample.Enum
 {
     public enum ElevatorCurrentStatus
     {
-        GOINGUP,
-        STOPPED,
-        GOINGDOWN
+        GoingUp,
+        Stopped,
+        GoingDown
     }
 }

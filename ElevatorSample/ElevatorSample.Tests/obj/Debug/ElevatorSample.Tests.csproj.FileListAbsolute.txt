@@ -1,0 +1,15 @@
+C:\Users\div\Documents\GitHub\ElevatorSample\ElevatorSample\ElevatorSample.Tests\bin\Debug\ElevatorSample.Tests.dll
+C:\Users\div\Documents\GitHub\ElevatorSample\ElevatorSample\ElevatorSample.Tests\bin\Debug\ElevatorSample.Tests.pdb
+C:\Users\div\Documents\GitHub\ElevatorSample\ElevatorSample\ElevatorSample.Tests\bin\Debug\ElevatorSample.dll
+C:\Users\div\Documents\GitHub\ElevatorSample\ElevatorSample\ElevatorSample.Tests\bin\Debug\Xamarin.Forms.Core.dll
+C:\Users\div\Documents\GitHub\ElevatorSample\ElevatorSample\ElevatorSample.Tests\bin\Debug\Acr.UserDialogs.Interface.dll
+C:\Users\div\Documents\GitHub\ElevatorSample\ElevatorSample\ElevatorSample.Tests\bin\Debug\PubSub.dll
+C:\Users\div\Documents\GitHub\ElevatorSample\ElevatorSample\ElevatorSample.Tests\bin\Debug\Splat.dll
+C:\Users\div\Documents\GitHub\ElevatorSample\ElevatorSample\ElevatorSample.Tests\bin\Debug\Acr.UserDialogs.dll
+C:\Users\div\Documents\GitHub\ElevatorSample\ElevatorSample\ElevatorSample.Tests\bin\Debug\ElevatorSample.pdb
+C:\Users\div\Documents\GitHub\ElevatorSample\ElevatorSample\ElevatorSample.Tests\bin\Debug\Xamarin.Forms.Core.xml
+C:\Users\div\Documents\GitHub\ElevatorSample\ElevatorSample\ElevatorSample.Tests\bin\Debug\Acr.UserDialogs.Interface.pdb
+C:\Users\div\Documents\GitHub\ElevatorSample\ElevatorSample\ElevatorSample.Tests\bin\Debug\Acr.UserDialogs.pdb
+C:\Users\div\Documents\GitHub\ElevatorSample\ElevatorSample\ElevatorSample.Tests\obj\Debug\ElevatorSample.Tests.csprojResolveAssemblyReference.cache
+C:\Users\div\Documents\GitHub\ElevatorSample\ElevatorSample\ElevatorSample.Tests\obj\Debug\ElevatorSample.Tests.dll
+C:\Users\div\Documents\GitHub\ElevatorSample\ElevatorSample\ElevatorSample.Tests\obj\Debug\ElevatorSample.Tests.pdb
